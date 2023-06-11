@@ -29,6 +29,7 @@ library(text2vec) # for word embedding implementation
 library(widyr) # for reshaping the text data
 library(irlba) # for svd
 library(umap) # for dimensionality reduction
+library(quanteda) #for some conText pre-processing
 ```
 
 We begin by reading in the data. These data come from a sample of 1m tweets by elected UK MPs over the period 2017-2019. The data contain just the name of the MP-user, the text of the tweet, and the MP's party. We then just add an ID variable called "postID."
@@ -307,7 +308,7 @@ The `DIM` parameter specifies the length of the word vector we want to result (i
 WINDOW_SIZE <- 6
 DIM <- 300
 ITERS <- 100
-COUNT_MIN <- 10
+COUNT_MIN <- 5
 
 ```
 
@@ -323,47 +324,46 @@ text <- sample(twts_sample$tweet)
 We then create a list object, tokenizing the text of each tweet within each item of the list. After this, we create the vocabulary object needed to implement the GloVe algorithm. We do this by creating an "itoken" object with `itoken()` and then creating a vocabulary with `create_vocabulary`. We then remove words that do not exceed our specified threshold above with `prune_vocabulary()`.
 
 ```{r, eval = F}
-# ================================ create vocab ================================
-tokens <- space_tokenizer(text)
-it <- itoken(tokens, progressbar = FALSE)
-vocab <- create_vocabulary(it)
-vocab_pruned <- prune_vocabulary(vocab, term_count_min = COUNT_MIN)  # keep only words that meet count threshold
+#create corpus object
+tweets_corpus <- corpus(text, text_field = "tweet", docvars = "party_value")
+toks <- tokens(tweets_corpus)
 
 ```
 
 Next up we vectorize our vocabulary and create our term co-occurrence matrix. Again, this is similar to the above where we created a matrix of PMIs for each of the word pairings in our corpus.
 
 ```{r, eval = F}
-# ================================ create term co-occurrence matrix
-# ================================
-vectorizer <- vocab_vectorizer(vocab_pruned)
-tcm <- create_tcm(it, vectorizer, skip_grams_window = WINDOW_SIZE, skip_grams_window_context = "symmetric", 
-    weights = rep(1, WINDOW_SIZE))
+# only use features that appear at least x times in the corpus
+feats <- dfm(toks, verbose = TRUE) %>% 
+  dfm_trim(min_termfreq = COUNT_MIN) %>% featnames()
+
+# leave the pads so that non-adjacent words will not become adjacent
+toks_feats <- tokens_select(toks, feats, padding = TRUE)
+
+toks_fcm <- fcm(toks_feats, context = "window", window = WINDOW_SIZE, 
+                count = "frequency", tri = FALSE,
+                weights = rep(1, WINDOW_SIZE))
 
 ```
 
 Then we set our final model parameters, learning rate and fit the model. This whole process will take some time. To save time when working through this tutorial, you may also download the resulting embedding from the Github repo linked a little further below.
 
 ```{r, eval = F}
-# ================================ set model parameters
-# ================================
-glove <- GlobalVectors$new(rank = DIM, x_max = 100, learning_rate = 0.05)
+glove <- GlobalVectors$new(rank = DIM, 
+                           x_max = 100,
+                           learning_rate = 0.05)
 
-# ================================ fit model ================================
-word_vectors_main <- glove$fit_transform(tcm, n_iter = ITERS, convergence_tol = 0.001, 
-    n_threads = RcppParallel::defaultNumThreads())
+wv_main <- glove$fit_transform(toks_fcm, n_iter = ITERS,
+                               convergence_tol = 1e-3, 
+                               n_threads = parallel::detectCores()) # set to 'parallel::detectCores()' to use all available cores
 
-
+wv_context <- glove$components
+local_glove <- wv_main + t(wv_context) # word vectors
 ```
 
 Finally, we get the resulting word embedding and save it as a .rds file.
 
 ```{r, eval=FALSE}
-# ================================ get output ================================
-word_vectors_context <- glove$components
-glove_embedding <- word_vectors_main + t(word_vectors_context)  # word vectors
-
-# ================================ save ================================
 saveRDS(glove_embedding, file = "local_glove.rds")
 
 ```
@@ -372,7 +372,7 @@ saveRDS(glove_embedding, file = "local_glove.rds")
 
 ```{r, eval = F}
 
-url <- "https://github.com/cjbarrie/CTA-ED/blob/main/data/wordembed/local_glove.rds?raw=true"
+url <- "https://github.com/cjbarrie/sicss_23/blob/main/data/wordembed/local_glove.rds?raw=true"
 glove_embedding <- readRDS(url(url, method="libcurl"))
 
 ```
@@ -448,3 +448,5 @@ We can see, here, then that our embeddings seem to make sense. We zoomed in firs
 
 1.  Inspect and visualize the nearest neighbour synonyms of other relevant words in the tweets corpus
 2.  Identify another region of interest in the GloVe-trained model and visualize
+3.  Output nearest synonyms for target words in a formatted table using the `kableExtra` package.
+4.  Investigate the [conText](https://github.com/prodriguezsosa/conText/) package and implement an analysis with e.g., the `nns_ratio()` function or another function. See [this guide](https://cran.r-project.org/web/packages/conText/vignettes/quickstart.html) for some example analyses.

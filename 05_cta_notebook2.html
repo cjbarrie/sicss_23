@@ -146,7 +146,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(text2vec) <span class="co"># for word embedding implementation</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(widyr) <span class="co"># for reshaping the text data</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(irlba) <span class="co"># for svd</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(umap) <span class="co"># for dimensionality reduction</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(umap) <span class="co"># for dimensionality reduction</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda) <span class="co">#for some conText pre-processing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We begin by reading in the data. These data come from a sample of 1m tweets by elected UK MPs over the period 2017-2019. The data contain just the name of the MP-user, the text of the tweet, and the MP’s party. We then just add an ID variable called “postID.”</p>
 <div class="cell">
@@ -464,7 +465,7 @@ f(X_{ij}) =
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>WINDOW_SIZE <span class="ot">&lt;-</span> <span class="dv">6</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>DIM <span class="ot">&lt;-</span> <span class="dv">300</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ITERS <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>COUNT_MIN <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>COUNT_MIN <span class="ot">&lt;-</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We next “shuffle” our text. This just means we are randomly reordering the character vector of tweets.</p>
 <div class="cell">
@@ -474,42 +475,43 @@ f(X_{ij}) =
 </div>
 <p>We then create a list object, tokenizing the text of each tweet within each item of the list. After this, we create the vocabulary object needed to implement the GloVe algorithm. We do this by creating an “itoken” object with <code>itoken()</code> and then creating a vocabulary with <code>create_vocabulary</code>. We then remove words that do not exceed our specified threshold above with <code>prune_vocabulary()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================ create vocab ================================</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tokens <span class="ot">&lt;-</span> <span class="fu">space_tokenizer</span>(text)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>it <span class="ot">&lt;-</span> <span class="fu">itoken</span>(tokens, <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>vocab <span class="ot">&lt;-</span> <span class="fu">create_vocabulary</span>(it)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>vocab_pruned <span class="ot">&lt;-</span> <span class="fu">prune_vocabulary</span>(vocab, <span class="at">term_count_min =</span> COUNT_MIN)  <span class="co"># keep only words that meet count threshold</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create corpus object</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tweets_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(text, <span class="at">text_field =</span> <span class="st">"tweet"</span>, <span class="at">docvars =</span> <span class="st">"party_value"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(tweets_corpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next up we vectorize our vocabulary and create our term co-occurrence matrix. Again, this is similar to the above where we created a matrix of PMIs for each of the word pairings in our corpus.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================ create term co-occurrence matrix</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="ot">&lt;-</span> <span class="fu">vocab_vectorizer</span>(vocab_pruned)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>tcm <span class="ot">&lt;-</span> <span class="fu">create_tcm</span>(it, vectorizer, <span class="at">skip_grams_window =</span> WINDOW_SIZE, <span class="at">skip_grams_window_context =</span> <span class="st">"symmetric"</span>, </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">weights =</span> <span class="fu">rep</span>(<span class="dv">1</span>, WINDOW_SIZE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only use features that appear at least x times in the corpus</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>feats <span class="ot">&lt;-</span> <span class="fu">dfm</span>(toks, <span class="at">verbose =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm_trim</span>(<span class="at">min_termfreq =</span> COUNT_MIN) <span class="sc">%&gt;%</span> <span class="fu">featnames</span>()</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># leave the pads so that non-adjacent words will not become adjacent</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>toks_feats <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(toks, feats, <span class="at">padding =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>toks_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(toks_feats, <span class="at">context =</span> <span class="st">"window"</span>, <span class="at">window =</span> WINDOW_SIZE, </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">count =</span> <span class="st">"frequency"</span>, <span class="at">tri =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">weights =</span> <span class="fu">rep</span>(<span class="dv">1</span>, WINDOW_SIZE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we set our final model parameters, learning rate and fit the model. This whole process will take some time. To save time when working through this tutorial, you may also download the resulting embedding from the Github repo linked a little further below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================ set model parameters</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>glove <span class="ot">&lt;-</span> GlobalVectors<span class="sc">$</span><span class="fu">new</span>(<span class="at">rank =</span> DIM, <span class="at">x_max =</span> <span class="dv">100</span>, <span class="at">learning_rate =</span> <span class="fl">0.05</span>)</span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>glove <span class="ot">&lt;-</span> GlobalVectors<span class="sc">$</span><span class="fu">new</span>(<span class="at">rank =</span> DIM, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">x_max =</span> <span class="dv">100</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">learning_rate =</span> <span class="fl">0.05</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================ fit model ================================</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>word_vectors_main <span class="ot">&lt;-</span> glove<span class="sc">$</span><span class="fu">fit_transform</span>(tcm, <span class="at">n_iter =</span> ITERS, <span class="at">convergence_tol =</span> <span class="fl">0.001</span>, </span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_threads =</span> RcppParallel<span class="sc">::</span><span class="fu">defaultNumThreads</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>wv_main <span class="ot">&lt;-</span> glove<span class="sc">$</span><span class="fu">fit_transform</span>(toks_fcm, <span class="at">n_iter =</span> ITERS,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">convergence_tol =</span> <span class="fl">1e-3</span>, </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">n_threads =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()) <span class="co"># set to 'parallel::detectCores()' to use all available cores</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>wv_context <span class="ot">&lt;-</span> glove<span class="sc">$</span>components</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>local_glove <span class="ot">&lt;-</span> wv_main <span class="sc">+</span> <span class="fu">t</span>(wv_context) <span class="co"># word vectors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we get the resulting word embedding and save it as a .rds file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================ get output ================================</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>word_vectors_context <span class="ot">&lt;-</span> glove<span class="sc">$</span>components</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>glove_embedding <span class="ot">&lt;-</span> word_vectors_main <span class="sc">+</span> <span class="fu">t</span>(word_vectors_context)  <span class="co"># word vectors</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================ save ================================</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(glove_embedding, <span class="at">file =</span> <span class="st">"local_glove.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(glove_embedding, <span class="at">file =</span> <span class="st">"local_glove.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>To save time when working through this tutorial, you may also download the resulting embedding from the Github repo with</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/cjbarrie/CTA-ED/blob/main/data/wordembed/local_glove.rds?raw=true"</span></span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/cjbarrie/sicss_23/blob/main/data/wordembed/local_glove.rds?raw=true"</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>glove_embedding <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(url, <span class="at">method=</span><span class="st">"libcurl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -578,6 +580,8 @@ f(X_{ij}) =
 <ol type="1">
 <li>Inspect and visualize the nearest neighbour synonyms of other relevant words in the tweets corpus</li>
 <li>Identify another region of interest in the GloVe-trained model and visualize</li>
+<li>Output nearest synonyms for target words in a formatted table using the <code>kableExtra</code> package.</li>
+<li>Investigate the <a href="https://github.com/prodriguezsosa/conText/">conText</a> package and implement an analysis with e.g., the <code>nns_ratio()</code> function or another function. See <a href="https://cran.r-project.org/web/packages/conText/vignettes/quickstart.html">this guide</a> for some example analyses.</li>
 </ol>
 </section>
 </section>

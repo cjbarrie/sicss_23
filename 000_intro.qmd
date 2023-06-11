@@ -113,7 +113,7 @@ git --version
 
 -   Create a personal access token
 
-```{r, eval = F}
+```{r, eval = F, echo = T}
 install.packages("usethis") #if you haven't already installed
 library(usethis)
 
@@ -122,35 +122,6 @@ usethis::create_github_token()
 gitcreds::gitcreds_set()
 
 ```
-
-## .gitignore
-
--   Where you can specify what to remove from the version control
-
-## .gitignore
-
-![](images/Screenshot%202023-06-11%20at%2009.19.55.png)
-
-## .gitignore
-
-![](images/Screenshot%202023-06-11%20at%2009.20.07.png)
-
-## README
-
--   Where we describe what the repo contains
-
-## README
-
-![](images/Screenshot%202023-06-11%20at%2009.22.56.png)
-
-## README
-
-![](images/Screenshot%202023-06-11%20at%2009.23.24.png)
-
-## Committing and pushing
-
--   "Commit" - a mark in the sand to where you might want to return
--   "Push" - publishing to source repo to save as current version
 
 ## Setting up in R
 
@@ -281,7 +252,53 @@ git push origin --delete example
 
 <https://learngitbranching.js.org/>
 
-      
+## .gitignore
+
+-   Where you can specify what to remove from the version control
+
+## .gitignore
+
+![](images/Screenshot%202023-06-11%20at%2009.19.55.png)
+
+## .gitignore
+
+![](images/Screenshot%202023-06-11%20at%2009.20.07.png)
+
+## README
+
+-   Where we describe what the repo contains
+
+## README
+
+![](images/Screenshot%202023-06-11%20at%2009.22.56.png)
+
+## README
+
+![](images/Screenshot%202023-06-11%20at%2009.23.24.png)
+
+
+## Reproducibility
+
+-   Versioning your code is step 1. But there are many more steps...
+
+-   Reproducibility also depends on...
+
+## Reproducibility
+
+::: incremental
+-   Version of the programming language used;
+
+-   Versions of the packages/libraries of said programming language used;
+
+-   Operating System, and its version;
+
+-   Versions of the underlying system libraries (which often go hand in hand with OS version, but not necessarily).
+
+-   And even the hardware architecture that you run all that software stack on.
+
+Taken from: [https://raps-with-r.dev/intro.html](https://raps-with-r.dev/intro.html)
+:::
+
 ## Ethics {.center}
 
 ```{css}
@@ -289,7 +306,6 @@ git push origin --delete example
   text-align: center;
 }
 ```
-
 
 ## Ethical case studies
 
