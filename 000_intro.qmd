@@ -1,0 +1,285 @@
+---
+title: "Introduction"
+subtitle: "SICSS, 2023"
+author: Christopher Barrie
+format:
+  revealjs:
+    chalkboard: true
+editor: visual
+---
+
+## Introduction
+
+1.  Welcome
+2.  Workflow
+3.  Ethics
+
+## Housekeeping
+
+-   Lunches 13:00-14:00 daily:
+
+    -   Vegan/vegetarian/GF options (go to front of queue!)
+
+    -   Week 2: a more diverse diet (AKA you're on your own)
+
+## Housekeeping
+
+-   Slack
+
+    -   Keep it on!
+
+    -   Channels for ***materials***
+
+    -   Channels for ***prep.***
+
+## Summer school structure
+
+-   5 Organizers:
+    -   Aybuke, Chris, Tod
+
+    -   Chris: main point of contact
+-   1 Teaching Assistant:
+    -   Lara
+
+## Summer school structure
+
+-   3 supporters:
+    -   [SSPS](https://www.sps.ed.ac.uk/); 🙏
+    -   [RTC](https://research-training-centre.sps.ed.ac.uk/); 🙏
+    -   and [Turing Institute](https://www.turing.ac.uk/) 🙏
+
+## Summer school structure week 1
+
+-   4 Days intensive instruction
+    -   10:00-16:00 everyday
+
+    -   16:00-17:00/17.30 research talk from invited speakers
+-   See: <https://github.com/cjbarrie/sicss_23> for full schedule + materials
+    -   Updated daily + linked materials
+-   Thursday: Social Data Science Hub launch, see [here](https://www.eventbrite.co.uk/e/social-data-science-sds-hub-launch-tickets-630675396087)
+-   Friday: group meal 🥳
+
+## Summer school structure week 2
+
+-   4 (and a bit) days group work
+    -   Collaboration projects OR your own idea.
+        -   10:00-16/17:00 everyday
+-   Final Day Presentations
+    -   12:00-16/17:00
+
+## Workflow
+
+-   Who uses Git?
+
+```         
+git --version 
+```
+
+![](images/Screenshot%202023-06-11%20at%2009.07.31.png)
+
+## Workflow
+
+::: incremental
+1.  We all need to create a Github account.
+
+2.  We get our computer talking to Git by logging our Github credentials (either SSH or HTTPS approach)
+
+3.  We create a Github Repo
+
+4.  We create an R "Project"
+
+5.  We start writing our code
+
+6.  We "commit" and then "push" our changes when ready
+:::
+
+## Setting up in R
+
+-   Create a personal access token
+
+```{r, eval = F}
+install.packages("usethis") #if you haven't already installed
+library(usethis)
+
+usethis::create_github_token()
+
+gitcreds::gitcreds_set()
+
+```
+
+## .gitignore
+
+-   Where you can specify what to remove from the version control
+
+## .gitignore
+
+![](images/Screenshot%202023-06-11%20at%2009.19.55.png)
+
+## .gitignore
+
+![](images/Screenshot%202023-06-11%20at%2009.20.07.png)
+
+## README
+
+-   Where we describe what the repo contains
+
+## README
+
+![](images/Screenshot%202023-06-11%20at%2009.22.56.png)
+
+## README
+
+![](images/Screenshot%202023-06-11%20at%2009.23.24.png)
+
+## Committing and pushing
+
+-   "Commit" - a mark in the sand to where you might want to return
+-   "Push" - publishing to source repo to save as current version
+
+## Setting up in R
+
+![](images/Screenshot%202022-09-22%20at%2009.09.00.png)
+
+## Setting up in R
+
+![](images/Screenshot%202022-09-22%20at%2009.09.34.png)
+
+## Setting up in R
+
+![](images/Screenshot%202022-09-22%20at%2009.12.36.png)
+
+## Setting up in R
+
+![](images/Screenshot%202022-09-22%20at%2009.04.32.png)
+
+## Setting up in R
+
+![](images/Screenshot%202022-09-22%20at%2009.04.50.png)
+
+## Setting up in R
+
+![](images/Screenshot%202022-09-22%20at%2009.05.01-01.png)
+
+## Setting up in R
+
+![](images/Screenshot%202023-06-11%20at%2009.32.14.png)
+
+## Setting up in R
+
+## ![](images/Screenshot%202023-06-11%20at%2009.33.11.png)
+
+## Or in Terminal...
+
+::: incremental
+```         
+git clone https://github.com/cjbarrie/sicss_23
+```
+
+```         
+# Download content from a remote repo 
+git pull origin main
+```
+
+```         
+git status 
+```
+:::
+
+## Ethical case studies
+
+![](images/barriefrey.png){fig-align="center"}
+
+## Case studies
+
+![](images/geolocwm2.png){fig-align="center"}
+
+## Case studies
+
+![](images/gdists.png){fig-align="center"}
+
+## What is at stake?
+
+-   Go to chalkboard
+
+## Case studies
+
+![](images/nytparlertitle.png){fig-align="center"}
+
+## Case studies
+
+![](images/nytparler.gif){fig-align="center"}
+
+## Ethics
+
+-   consequentialism
+-   deontology
+
+## How do we decide?
+
+-   IRB (rules-based)
+-   ethical judgment (principles-based)
+
+...
+
+-   and we do this *openly* (transparency-based accountability)
+
+## Ethics
+
+-   respect for persons
+-   beneficence
+-   justice
+-   respect for law and public interest
+
+## Ethics
+
+-   respect for persons (Belmont)
+-   beneficence (Belmont)
+-   justice (Belmont)
+-   respect for law and public interest (Menlo)
+
+1.  <https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html>
+
+2.  <https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf>
+
+3.  <https://aoir.org/reports/ethics3.pdf>
+
+## Ethics
+
+-   respect for persons
+    -   participants decide--not you (informed consent)
+
+## Ethics
+
+-   beneficence
+    -   minimize risk and maximiize benefits to decide if worth it
+
+    -   N.B. third-party oversight (because researcher bias)
+
+## Ethics
+
+-   justice
+
+    -   distribution of benefits and burdens of research
+
+        -   vulnerable individuals; global South as lab
+
+## Ethics
+
+-   respect for law and public interest
+
+    -   compliance (TOS and general law...)
+        -   N.B. difficulties with cross-national research
+    -   be open about what you're doing (transparency-based accountability)
+
+## Group work
+
+-   Split into five groups
+-   Each of you assigned one reading
+    -   <https://www.pnas.org/doi/10.1073/pnas.1320040111>
+
+    -   <https://www.dropbox.com/s/883j32og8zcx0ew/Mexico%20Saturation%20Intervention%20v12.pdf?dl=0>
+-   Think about the study as it relates to: respect for persons; beneficence; justice; respect for law and public interest
+
+## What is at stake?
+
+-   Go to chalkboard
