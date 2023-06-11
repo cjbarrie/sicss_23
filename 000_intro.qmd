@@ -14,6 +14,14 @@ editor: visual
 2.  Workflow
 3.  Ethics
 
+## Welcome {.center}
+
+```{css}
+.center h2 {
+  text-align: center;
+}
+```
+
 ## Housekeeping
 
 -   Lunches 13:00-14:00 daily:
@@ -66,6 +74,14 @@ editor: visual
         -   10:00-16/17:00 everyday
 -   Final Day Presentations
     -   12:00-16/17:00
+
+## Workflow {.center}
+
+```{css}
+.center h2 {
+  text-align: center;
+}
+```
 
 ## Workflow
 
@@ -170,7 +186,6 @@ gitcreds::gitcreds_set()
 
 ## Or in Terminal...
 
-::: incremental
 ```         
 git clone https://github.com/cjbarrie/sicss_23
 ```
@@ -191,14 +206,12 @@ git pull origin main
 git status
 ```
 
+## Committing
+
 ```         
 touch example.R
 ```
-:::
 
-## Or in Terminal...
-
-::: incremental
 ```         
 git status 
 ```
@@ -215,11 +228,7 @@ git commit -m "example commit"
 ```         
 git push
 ```
-:::
 
-## Or in Terminal...
-
-::: incremental
 ```         
 git pull origin main
 
@@ -233,11 +242,8 @@ git fetch origin main
 ```         
 git merge
 ```
-:::
 
-## Or in Terminal...
-
-::: incremental
+## Branching
 
 ```         
 git branch "example"
@@ -270,6 +276,20 @@ git checkout origin
 git branch -d example
 git push origin --delete example
 ```
+
+## If you want to practice more...
+
+<https://learngitbranching.js.org/>
+
+      
+## Ethics {.center}
+
+```{css}
+.center h2 {
+  text-align: center;
+}
+```
+
 
 ## Ethical case studies
 

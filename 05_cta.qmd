@@ -1,0 +1,211 @@
+---
+title: "Computational Text Analysis"
+subtitle: "SICSS, 2023"
+author: Christopher Barrie
+format:
+  revealjs:
+    chalkboard: true
+editor: visual
+---
+
+## Manipulating text
+
+```{r, eval = T, echo = T}
+library(dplyr) #tidyverse package for wrangling data
+library(quanteda) #quantitative text analysis package
+library(tidytext) #package for 'tidy' manipulation of text data
+library(topicmodels) #for topic modelling
+library(ggplot2) #package for visualizing data
+library(ggthemes) #to make plots nicer
+library(stringi) #to generate random text
+```
+
+## Topic modelling
+
+```{r, eval = T, echo = T}
+#| code-line-numbers: "|1|2|4"
+
+data("AssociatedPress", 
+     package = "topicmodels")
+
+ap_tidy <- tidy(AssociatedPress)
+ap_tidy
+```
+
+## Topic modelling
+
+```{r, eval = T, echo = T}
+
+data("AssociatedPress", 
+     package = "topicmodels")
+
+str(AssociatedPress)
+```
+
+## Inspect topic terms
+
+```{r, eval = T, echo = T}
+
+lda_output <- LDA(AssociatedPress[1:100,], k = 10)
+
+terms(lda_output, 10)
+```
+
+## Inspect βs
+
+```{r, eval = T, echo = T}
+lda_beta <- tidy(lda_output, matrix = "beta")
+
+lda_beta %>%
+  arrange(-beta)
+```
+
+## Inspect γs
+
+```{r, eval = T, echo = T}
+lda_gamma <- tidy(lda_output, matrix = "gamma")
+
+lda_gamma %>%
+  arrange(-gamma)
+```
+
+## Plot
+
+```{r, eval = T, echo = T}
+
+lda_beta %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta) %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free", ncol = 4) +
+  scale_y_reordered() +
+  theme_tufte(base_family = "Helvetica")
+
+```
+
+## Plot
+
+::: panel-tabset
+### Code
+
+```{r, echo = T, eval = T}
+betaplot <- lda_beta %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta) %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free", ncol = 4) +
+  scale_y_reordered() +
+  theme_tufte(base_family = "Helvetica")
+```
+
+### Plot
+
+```{r, eval = T, echo = F}
+betaplot
+```
+:::
+
+## Word embedding
+
+```{r, eval = T, echo = F}
+library(Matrix) #for handling matrices
+library(tidyverse)
+library(irlba) # for SVD
+library(umap) # for dimensionality reduction
+
+load("data/pmi_svd.RData")
+load("data/pmi_matrix.RData")
+```
+
+```{r, eval = F, echo = T}
+library(Matrix) #for handling matrices
+library(tidyverse)
+library(irlba) # for SVD
+library(umap) # for dimensionality reduction
+```
+
+## Data structure
+
+-   Word pair matrix with PMI (Pairwise mutual information)
+
+-   where PMI = log(P(x,y)/P(x)P(y))
+
+-   and P(x,y) is the probability of word x appearing within a six-word window of word y
+
+-   and P(x) is the probability of word x appearing in the whole corpus
+
+-   and P(y) is the probability of word y appearing in the whole corpus
+
+## Data structure
+
+```{r ,echo=F}
+
+head(pmi_matrix[1:6, 1:6])
+
+```
+
+## Data structure
+
+```{r ,echo=F}
+
+glimpse(pmi_matrix)
+
+```
+
+## Singular value decomposition
+
+```{r ,echo=F, eval = F}
+
+pmi_svd <- irlba(pmi_matrix, 256, maxit = 500)
+
+```
+
+## Singular value decomposition
+
+```{r ,echo=F, eval = F}
+
+pmi_svd <- irlba(pmi_matrix, 256, maxit = 500)
+
+```
+
+## Singular value decomposition
+
+```{r ,echo=T, eval = T}
+
+word_vectors <- pmi_svd$u
+rownames(word_vectors) <- rownames(pmi_matrix)
+dim(word_vectors)
+
+```
+
+## Singular value decomposition
+
+```{r ,echo=T, eval = T}
+
+head(word_vectors[1:5, 1:5])
+```
+
+## Word embeddings with GloVe
+
+After we've generated our term co-ocurrence matrix...
+
+```{r, eval = F, echo = T}
+
+DIM <- 300
+ITERS <- 100
+# ================================ set model parameters
+# ================================
+glove <- GlobalVectors$new(rank = DIM, x_max = 100, learning_rate = 0.05)
+
+# ================================ fit model ================================
+word_vectors_main <- glove$fit_transform(tcm, n_iter = ITERS, convergence_tol = 0.001, 
+    n_threads = RcppParallel::defaultNumThreads())
+```
