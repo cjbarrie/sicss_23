@@ -58,7 +58,7 @@ We will provide a set of groups project ideas that have been suggested by your i
 
 # Day 2
 
-- CTA Intro.: [here](https://docs.google.com/presentation/d/13TWsKO_ozHAGKLk2pg3SITujeEwDsJxRzT3begyx-WU/edit?usp=sharing)
+- CTA Intro.: [here](https://docs.google.com/presentation/d/e/2PACX-1vQtIyFyGG7dc_DLuNy3iI9wEmGyZfRG8qChHr56c6Bd5kWO3RRskidCslBfJBy3-RS5D3tFR_CTa7Bi/pub?start=true&loop=false&delayms=3000)
 - CTA Intro. code: [here](https://raw.githack.com/cjbarrie/sicss_23/main/05_cta.html)
 - CTA worksheet 1: [here](https://raw.githack.com/cjbarrie/sicss_23/main/05_cta_notebook1.html)
 - CTA worksheet 2: [here](https://raw.githack.com/cjbarrie/sicss_23/main/05_cta_notebook2.html)
