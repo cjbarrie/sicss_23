@@ -174,14 +174,36 @@ gitcreds::gitcreds_set()
 ```         
 git clone https://github.com/cjbarrie/sicss_23
 ```
+```
+cd sicss_23
+```
 
 ```         
-# Download content from a remote repo 
 git pull origin main
+```
+
+```
+git status
+```
+
+```
+touch example.R
 ```
 
 ```         
 git status 
+```
+
+```
+git add --all
+```
+
+```
+git commit -m "example commit"
+```
+
+```
+git push
 ```
 :::
 
