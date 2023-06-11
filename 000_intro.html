@@ -445,6 +445,103 @@ Christopher Barrie
 </ol>
 </div>
 </section>
+<section id="setting-up-in-r" class="slide level2">
+<h2>Setting up in R</h2>
+<ul>
+<li>Create a personal access token</li>
+</ul>
+<div class="cell">
+
+</div>
+</section>
+<section id="gitignore" class="slide level2">
+<h2>.gitignore</h2>
+<ul>
+<li>Where you can specify what to remove from the version control</li>
+</ul>
+</section>
+<section id="gitignore-1" class="slide level2">
+<h2>.gitignore</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.19.55.png" class="r-stretch"></section>
+<section id="gitignore-2" class="slide level2">
+<h2>.gitignore</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.20.07.png" class="r-stretch"></section>
+<section id="readme" class="slide level2">
+<h2>README</h2>
+<ul>
+<li>Where we describe what the repo contains</li>
+</ul>
+</section>
+<section id="readme-1" class="slide level2">
+<h2>README</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.22.56.png" class="r-stretch"></section>
+<section id="readme-2" class="slide level2">
+<h2>README</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.23.24.png" class="r-stretch"></section>
+<section id="committing-and-pushing" class="slide level2">
+<h2>Committing and pushing</h2>
+<ul>
+<li>“Commit” - a mark in the sand to where you might want to return</li>
+<li>“Push” - publishing to source repo to save as current version</li>
+</ul>
+</section>
+<section id="setting-up-in-r-1" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.09.00.png" class="r-stretch"></section>
+<section id="setting-up-in-r-2" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.09.34.png" class="r-stretch"></section>
+<section id="setting-up-in-r-3" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.12.36.png" class="r-stretch"></section>
+<section id="setting-up-in-r-4" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.04.32.png" class="r-stretch"></section>
+<section id="setting-up-in-r-5" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.04.50.png" class="r-stretch"></section>
+<section id="setting-up-in-r-6" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.05.01-01.png" class="r-stretch"></section>
+<section id="setting-up-in-r-7" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.32.14.png" class="r-stretch"></section>
+<section id="setting-up-in-r-8" class="slide level2">
+<h2>Setting up in R</h2>
+</section>
+<section id="section" class="slide level2">
+<h2><img data-src="images/Screenshot%202023-06-11%20at%2009.33.11.png"></h2>
+</section>
+<section id="or-in-terminal" class="slide level2">
+<h2>Or in Terminal…</h2>
+<div>
+<pre><code>git clone https://github.com/cjbarrie/sicss_23</code></pre>
+<pre><code>cd sicss_23</code></pre>
+<pre><code>git pull origin main</code></pre>
+<pre><code>git status</code></pre>
+<pre><code>touch example.R</code></pre>
+</div>
+</section>
+<section id="or-in-terminal-1" class="slide level2">
+<h2>Or in Terminal…</h2>
+<div>
+<pre><code>git status </code></pre>
+<pre><code>git add --all</code></pre>
+<pre><code>git commit -m "example commit"</code></pre>
+<pre><code>git push</code></pre>
+</div>
+</section>
 <section id="ethical-case-studies" class="slide level2">
 <h2>Ethical case studies</h2>
 
@@ -790,6 +887,44 @@ Christopher Barrie
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -174,38 +174,102 @@ gitcreds::gitcreds_set()
 ```         
 git clone https://github.com/cjbarrie/sicss_23
 ```
-```
+
+```         
 cd sicss_23
+```
+
+```         
+git remote -v
 ```
 
 ```         
 git pull origin main
 ```
 
-```
+```         
 git status
 ```
 
-```
+```         
 touch example.R
 ```
+:::
 
+## Or in Terminal...
+
+::: incremental
 ```         
 git status 
 ```
 
-```
+```         
 git add --all
+# or git add .
 ```
 
-```
+```         
 git commit -m "example commit"
 ```
 
-```
+```         
 git push
 ```
 :::
+
+## Or in Terminal...
+
+::: incremental
+```         
+git pull origin main
+
+#OR
+```
+
+```         
+git fetch origin main
+```
+
+```         
+git merge
+```
+:::
+
+## Or in Terminal...
+
+::: incremental
+
+```         
+git branch "example"
+```
+
+```         
+git checkout example
+```
+
+```         
+touch example.R
+```
+
+```         
+git commit -m "branch example"
+```
+
+```         
+git push --set-upstream origin example
+```
+
+## PRs...
+
+![](images/Screenshot%202023-06-11%20at%2010.02.12.png)
+
+## Branch delete
+
+```         
+git checkout origin
+git branch -d example
+git push origin --delete example
+```
 
 ## Ethical case studies
 
