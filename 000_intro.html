@@ -528,6 +528,7 @@ Christopher Barrie
 <div>
 <pre><code>git clone https://github.com/cjbarrie/sicss_23</code></pre>
 <pre><code>cd sicss_23</code></pre>
+<pre><code>git remote -v</code></pre>
 <pre><code>git pull origin main</code></pre>
 <pre><code>git status</code></pre>
 <pre><code>touch example.R</code></pre>
@@ -537,10 +538,40 @@ Christopher Barrie
 <h2>Or in Terminal…</h2>
 <div>
 <pre><code>git status </code></pre>
-<pre><code>git add --all</code></pre>
+<pre><code>git add --all
+# or git add .</code></pre>
 <pre><code>git commit -m "example commit"</code></pre>
 <pre><code>git push</code></pre>
 </div>
+</section>
+<section id="or-in-terminal-2" class="slide level2">
+<h2>Or in Terminal…</h2>
+<div>
+<pre><code>git pull origin main
+
+#OR</code></pre>
+<pre><code>git fetch origin main</code></pre>
+<pre><code>git merge</code></pre>
+</div>
+</section>
+<section id="or-in-terminal-3" class="slide level2">
+<h2>Or in Terminal…</h2>
+<p>::: incremental</p>
+<pre><code>git branch "example"</code></pre>
+<pre><code>git checkout example</code></pre>
+<pre><code>touch example.R</code></pre>
+<pre><code>git commit -m "branch example"</code></pre>
+<pre><code>git push --set-upstream origin example</code></pre>
+</section>
+<section id="prs" class="slide level2">
+<h2>PRs…</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2010.02.12.png" class="r-stretch"></section>
+<section id="branch-delete" class="slide level2">
+<h2>Branch delete</h2>
+<pre><code>git checkout origin
+git branch -d example
+git push origin --delete example</code></pre>
 </section>
 <section id="ethical-case-studies" class="slide level2">
 <h2>Ethical case studies</h2>
