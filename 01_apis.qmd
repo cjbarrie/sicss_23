@@ -1,6 +1,6 @@
 ---
 title: "Using APIs"
-subtitle: "SICSS, 2022"
+subtitle: "SICSS, 2023"
 author: Christopher Barrie
 format:
   revealjs:
