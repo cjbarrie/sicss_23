@@ -75,6 +75,383 @@ editor: visual
 -   Final Day Presentations
     -   12:00-16/17:00
 
+## Intro.: Computational Social Science
+
+-   What is it?
+
+## Intro.: Computational Social Science
+
+::: {layout-ncol="2"}
+![](images/edelmann.png)
+
+"Computational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records."
+:::
+
+## Intro.: Computational Social Science
+
+::: {layout-ncol="2"}
+![](images/cssobstacles.png)
+
+"\[CSS is\] the development and application of computational methods to complex, typically large-scale, human (sometimes simulated) behavioral data."
+:::
+
+## Intro.: Computational Social Science
+
+Commonalities:
+
+-   Computationally intensive methods
+
+-   New types of data
+
+-   Outcome of interest is ultimately human behaviour (?)
+
+## Intro.: Computational Social Science
+
+Tensions:
+
+-   Place of theory
+
+    -   Theory from data
+
+    -   New data for old theories?
+
+## Where has this all come from?
+
+## 
+
+![](images/intpen.png){fig-align="center"}\
+
+## 
+
+![](images/smpen.png){fig-align="center"}\
+
+## 
+
+![](images/wwwsites.png){fig-align="center"}\
+
+## 
+
+![](images/dtdata.png){fig-align="center"}\
+
+## Why are these data different?
+
+1.  Volume
+2.  Velocity
+3.  Producers
+4.  Variety
+
+## Digital trace data
+
+What is digital trace data?
+
+-   Social media posts
+
+-   Blogs and webpages
+
+-   Call detail records (CDRs)
+
+-   Web searches
+
+-   Wearables
+
+-   Internet of Things
+
+## Digital trace data
+
+What does it look like?
+
+::: {#fig-salganik}
+![](images/readymade.png){fig-align="center"}
+
+Salganik, Matthew. 2018. Bit by Bit: Social Research in the Digital Age. Princeton: Princeton University Press. p.7.
+:::
+
+## Examples
+
+```{r, echo=T, eval = F}
+[{'text': 'hello freak [ __ ] I would love to play',
+  'start': 0.439,
+  'duration': 5.351},
+ {'text': 'you the dinosaurs are not real video',
+  'start': 3.72,
+  'duration': 4.82},
+ {'text': 'just do it God', 'start': 5.79, 'duration': 5.25},
+ {'text': "we probably can't play it on YouTube",
+  'start': 8.54,
+  'duration': 3.76},
+ {'text': "where we'll get pulled but we could play",
+  'start': 11.04,
+  'duration': 4.44},
+ {'text': 'the audio right play the I will put the',
+  'start': 12.3,
+  'duration': 4.59},
+ {'text': 'video up on the screen and play the',
+  'start': 15.48,
+  'duration': 3.389},
+ {'text': 'audio for you and you could just [ __ ] it',
+  'start': 16.89,
+  'duration': 4.29},
+ {'text': 'your head could turn beet red smokes',
+  'start': 18.869,
+  'duration': 4.381},
+```
+
+## Examples
+
+![](images/ahram.png){fig-align="center"}
+
+## Examples
+
+```{r, eval = F, echo=T}
+<publicwhip scraperversion="b" latest="yes">
+  <oral-heading id="uk.org.publicwhip/debate/2017-01-09b.1.0" nospeaker="true" colnum="1" time="" url="">Oral
+Answers to
+Questions</oral-heading>
+  <major-heading id="uk.org.publicwhip/debate/2017-01-09b.1.1" nospeaker="true" colnum="1" time="" url="">
+WORK AND PENSIONS
+</major-heading>
+  <speech id="uk.org.publicwhip/debate/2017-01-09b.1.2" nospeaker="true" colnum="1" time="" url="">
+    <p pid="b1.2/1">The Secretary of State was asked—</p>
+  </speech>
+  <speech id="uk.org.publicwhip/debate/2017-01-09b.1.3" speakername="John Bercow" person_id="uk.org.publicwhip/person/10040" colnum="1" time="" url="">
+    <p pid="b1.3/1">I call Mr Gerald Jones. Where is the fella? He is not here.</p>
+  </speech>
+  <minor-heading id="uk.org.publicwhip/debate/2017-01-09b.1.4" nospeaker="true" colnum="1" time="" url="">
+Self-employment
+</minor-heading>
+  <speech id="uk.org.publicwhip/debate/2017-01-09b.1.5" person_id="uk.org.publicwhip/person/25309" speakername="Peter Dowd" oral-qnum="2" colnum="1" time="" url="">
+    <p pid="b1.5/1" qnum="908056">What recent assessment he has made of trends in the level of self-employment. </p>
+```
+
+## Applied examples
+
+::: {#fig-example1}
+![](images/twitterscience.png){fig-align="center"}
+
+<https://advances.sciencemag.org/content/7/29/eabe6534/tab-article-info>
+:::
+
+## Applied examples
+
+::: {#fig-example2}
+![](images/parler.png){fig-align="center"}
+
+<https://arxiv.org/abs/2101.03820>
+:::
+
+## Applied examples
+
+::: {#fig-example3}
+![](images/YTLai.png){fig-align="center"}
+
+<https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4088828>
+:::
+
+## Applied examples
+
+::: {#fig-example4}
+![](images/cdrs.png){fig-align="center"}
+
+<https://www.science.org/doi/10.1126/science.aac4420>
+:::
+
+## Applied examples
+
+::: {#fig-example5}
+![](images/dawidowitz.png){fig-align="center"}
+
+<https://www.sciencedirect.com/science/article/pii/S0047272714000929>
+:::
+
+## Applied examples
+
+::: {#fig-example6}
+![](images/marwick.png){fig-align="center"}
+
+<https://journals.sagepub.com/doi/abs/10.1177/1461444810365313>
+:::
+
+## Isn't this all just a fad?
+
+No
+
+## Next question?
+
+## But seriously...
+
+-   Ubiquity
+-   Diversity
+-   Complementarity
+
+## But seriously...
+
+-   Ubiquity
+    -   Digital trace data is everywhere and "always on"
+
+## But seriously...
+
+-   Diversity
+    -   of methods and data sources means no-brainer to use
+
+## But seriously...
+
+-   Complementarity
+    -   of data and methods means enrichment (of the old) not substitution (by the new)
+
+## Isn't it all just \[stats./quant./data science\]?
+
+-   In some ways: yeah...
+
+## Isn't it all just \[stats./quant./data science\]?
+
+::: {#fig-example7}
+![](images/tukey.png){fig-align="center"}
+
+<https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-33/issue-1/The-Future-of-Data-Analysis/10.1214/aoms/1177704711.full>
+:::
+
+## Isn't it all just \[stats./quant./data science\]?
+
+-   In some ways: yeah...
+
+-   In other ways: well, no...
+
+    -   New types of data
+
+        -   e.g., unstructured and trace data
+        -   associated decisions re how to restructure (compare: surveys)
+
+## Isn't it all just \[stats./quant./data science\]?
+
+-   In other ways: well, no...
+
+    -   New emphasis
+
+        -   e.g., learning from data and prediction
+
+## Isn't it all just \[stats./quant./data science\]?
+
+-   In other ways: well, no...
+
+    -   New theory
+
+        -   e.g., human-computer interaction
+
+## Isn't it all just \[stats./quant./data science\]?
+
+-   In other ways: well, no...
+
+    -   New ethical dilemmas...
+    
+
+## Ethics {.center}
+
+```{css}
+.center h2 {
+  text-align: center;
+}
+```
+
+## Ethical case studies
+
+![](images/barriefrey.png){fig-align="center"}
+
+## Case studies
+
+![](images/geolocwm2.png){fig-align="center"}
+
+## Case studies
+
+![](images/gdists.png){fig-align="center"}
+
+## What is at stake?
+
+-   Go to chalkboard
+
+## Case studies
+
+![](images/nytparlertitle.png){fig-align="center"}
+
+## Case studies
+
+![](images/nytparler.gif){fig-align="center"}
+
+## Ethics
+
+-   consequentialism
+-   deontology
+
+## How do we decide?
+
+-   IRB (rules-based)
+-   ethical judgment (principles-based)
+
+...
+
+-   and we do this *openly* (transparency-based accountability)
+
+## Ethics
+
+-   respect for persons
+-   beneficence
+-   justice
+-   respect for law and public interest
+
+## Ethics
+
+-   respect for persons (Belmont)
+-   beneficence (Belmont)
+-   justice (Belmont)
+-   respect for law and public interest (Menlo)
+
+1.  <https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html>
+
+2.  <https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf>
+
+3.  <https://aoir.org/reports/ethics3.pdf>
+
+## Ethics
+
+-   respect for persons
+    -   participants decide--not you (informed consent)
+
+## Ethics
+
+-   beneficence
+    -   minimize risk and maximiize benefits to decide if worth it
+
+    -   N.B. third-party oversight (because researcher bias)
+
+## Ethics
+
+-   justice
+
+    -   distribution of benefits and burdens of research
+
+        -   vulnerable individuals; global South as lab
+
+## Ethics
+
+-   respect for law and public interest
+
+    -   compliance (TOS and general law...)
+        -   N.B. difficulties with cross-national research
+    -   be open about what you're doing (transparency-based accountability)
+
+## Group work
+
+-   Split into five groups
+-   Each of you assigned one reading
+    -   <https://www.pnas.org/doi/10.1073/pnas.1320040111>
+
+    -   <https://www.dropbox.com/s/883j32og8zcx0ew/Mexico%20Saturation%20Intervention%20v12.pdf?dl=0>
+-   Think about the study as it relates to: respect for persons; beneficence; justice; respect for law and public interest
+
+## What is at stake?
+
+-   Go to chalkboard
+
+
 ## Workflow {.center}
 
 ```{css}
@@ -276,7 +653,6 @@ git push origin --delete example
 
 ![](images/Screenshot%202023-06-11%20at%2009.23.24.png)
 
-
 ## Reproducibility
 
 -   Versioning your code is step 1. But there are many more steps...
@@ -296,112 +672,5 @@ git push origin --delete example
 
 -   And even the hardware architecture that you run all that software stack on.
 
-Taken from: [https://raps-with-r.dev/intro.html](https://raps-with-r.dev/intro.html)
+Taken from: <https://raps-with-r.dev/intro.html>
 :::
-
-## Ethics {.center}
-
-```{css}
-.center h2 {
-  text-align: center;
-}
-```
-
-## Ethical case studies
-
-![](images/barriefrey.png){fig-align="center"}
-
-## Case studies
-
-![](images/geolocwm2.png){fig-align="center"}
-
-## Case studies
-
-![](images/gdists.png){fig-align="center"}
-
-## What is at stake?
-
--   Go to chalkboard
-
-## Case studies
-
-![](images/nytparlertitle.png){fig-align="center"}
-
-## Case studies
-
-![](images/nytparler.gif){fig-align="center"}
-
-## Ethics
-
--   consequentialism
--   deontology
-
-## How do we decide?
-
--   IRB (rules-based)
--   ethical judgment (principles-based)
-
-...
-
--   and we do this *openly* (transparency-based accountability)
-
-## Ethics
-
--   respect for persons
--   beneficence
--   justice
--   respect for law and public interest
-
-## Ethics
-
--   respect for persons (Belmont)
--   beneficence (Belmont)
--   justice (Belmont)
--   respect for law and public interest (Menlo)
-
-1.  <https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html>
-
-2.  <https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf>
-
-3.  <https://aoir.org/reports/ethics3.pdf>
-
-## Ethics
-
--   respect for persons
-    -   participants decide--not you (informed consent)
-
-## Ethics
-
--   beneficence
-    -   minimize risk and maximiize benefits to decide if worth it
-
-    -   N.B. third-party oversight (because researcher bias)
-
-## Ethics
-
--   justice
-
-    -   distribution of benefits and burdens of research
-
-        -   vulnerable individuals; global South as lab
-
-## Ethics
-
--   respect for law and public interest
-
-    -   compliance (TOS and general law...)
-        -   N.B. difficulties with cross-national research
-    -   be open about what you're doing (transparency-based accountability)
-
-## Group work
-
--   Split into five groups
--   Each of you assigned one reading
-    -   <https://www.pnas.org/doi/10.1073/pnas.1320040111>
-
-    -   <https://www.dropbox.com/s/883j32og8zcx0ew/Mexico%20Saturation%20Intervention%20v12.pdf?dl=0>
--   Think about the study as it relates to: respect for persons; beneficence; justice; respect for law and public interest
-
-## What is at stake?
-
--   Go to chalkboard

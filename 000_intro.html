@@ -498,176 +498,286 @@ Christopher Barrie
 </ul></li>
 </ul>
 </section>
-<section id="workflow" class="slide level2 center">
-<h2>Workflow</h2>
-<div class="cell">
-<style type="text/css">
-.center h2 {
-  text-align: center;
-}
-</style>
-</div>
-</section>
-<section id="workflow-1" class="slide level2">
-<h2>Workflow</h2>
+<section id="intro.-computational-social-science" class="slide level2">
+<h2>Intro.: Computational Social Science</h2>
 <ul>
-<li>Who uses Git?</li>
+<li>What is it?</li>
 </ul>
-<pre><code>git --version </code></pre>
-
-<img data-src="images/Screenshot%202023-06-11%20at%2009.07.31.png" class="r-stretch"></section>
-<section id="workflow-2" class="slide level2">
-<h2>Workflow</h2>
-<div>
-<ol type="1">
-<li class="fragment"><p>We all need to create a Github account.</p></li>
-<li class="fragment"><p>We get our computer talking to Git by logging our Github credentials (either SSH or HTTPS approach)</p></li>
-<li class="fragment"><p>We create a Github Repo</p></li>
-<li class="fragment"><p>We create an R “Project”</p></li>
-<li class="fragment"><p>We start writing our code</p></li>
-<li class="fragment"><p>We “commit” and then “push” our changes when ready</p></li>
-</ol>
+</section>
+<section id="intro.-computational-social-science-1" class="slide level2">
+<h2>Intro.: Computational Social Science</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/edelmann.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>“Computational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records.”</p>
+</div>
+</div>
 </div>
 </section>
-<section id="setting-up-in-r" class="slide level2">
-<h2>Setting up in R</h2>
+<section id="intro.-computational-social-science-2" class="slide level2">
+<h2>Intro.: Computational Social Science</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/cssobstacles.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>“[CSS is] the development and application of computational methods to complex, typically large-scale, human (sometimes simulated) behavioral data.”</p>
+</div>
+</div>
+</div>
+</section>
+<section id="intro.-computational-social-science-3" class="slide level2">
+<h2>Intro.: Computational Social Science</h2>
+<p>Commonalities:</p>
 <ul>
-<li>Create a personal access token</li>
+<li><p>Computationally intensive methods</p></li>
+<li><p>New types of data</p></li>
+<li><p>Outcome of interest is ultimately human behaviour (?)</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">install.packages</span>(<span class="st">"usethis"</span>) <span class="co">#if you haven't already installed</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(usethis)</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="setting-up-in-r-1" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202022-09-22%20at%2009.09.00.png" class="r-stretch"></section>
-<section id="setting-up-in-r-2" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202022-09-22%20at%2009.09.34.png" class="r-stretch"></section>
-<section id="setting-up-in-r-3" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202022-09-22%20at%2009.12.36.png" class="r-stretch"></section>
-<section id="setting-up-in-r-4" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202022-09-22%20at%2009.04.32.png" class="r-stretch"></section>
-<section id="setting-up-in-r-5" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202022-09-22%20at%2009.04.50.png" class="r-stretch"></section>
-<section id="setting-up-in-r-6" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202022-09-22%20at%2009.05.01-01.png" class="r-stretch"></section>
-<section id="setting-up-in-r-7" class="slide level2">
-<h2>Setting up in R</h2>
-
-<img data-src="images/Screenshot%202023-06-11%20at%2009.32.14.png" class="r-stretch"></section>
-<section id="setting-up-in-r-8" class="slide level2">
-<h2>Setting up in R</h2>
+<section id="intro.-computational-social-science-4" class="slide level2">
+<h2>Intro.: Computational Social Science</h2>
+<p>Tensions:</p>
+<ul>
+<li><p>Place of theory</p>
+<ul>
+<li><p>Theory from data</p></li>
+<li><p>New data for old theories?</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="where-has-this-all-come-from" class="slide level2">
+<h2>Where has this all come from?</h2>
 </section>
 <section id="section" class="slide level2">
-<h2><img data-src="images/Screenshot%202023-06-11%20at%2009.33.11.png"></h2>
+<h2></h2>
+<p><img data-src="images/intpen.png" data-fig-align="center"><br>
+</p>
 </section>
-<section id="or-in-terminal" class="slide level2">
-<h2>Or in Terminal…</h2>
-<pre><code>git clone https://github.com/cjbarrie/sicss_23</code></pre>
-<pre><code>cd sicss_23</code></pre>
-<pre><code>git remote -v</code></pre>
-<pre><code>git pull origin main</code></pre>
-<pre><code>git status</code></pre>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><img data-src="images/smpen.png" data-fig-align="center"><br>
+</p>
 </section>
-<section id="committing" class="slide level2">
-<h2>Committing</h2>
-<pre><code>touch example.R</code></pre>
-<pre><code>git status </code></pre>
-<pre><code>git add --all
-# or git add .</code></pre>
-<pre><code>git commit -m "example commit"</code></pre>
-<pre><code>git push</code></pre>
-<pre><code>git pull origin main
-
-#OR</code></pre>
-<pre><code>git fetch origin main</code></pre>
-<pre><code>git merge</code></pre>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><img data-src="images/wwwsites.png" data-fig-align="center"><br>
+</p>
 </section>
-<section id="branching" class="slide level2">
-<h2>Branching</h2>
-<pre><code>git branch "example"</code></pre>
-<pre><code>git checkout example</code></pre>
-<pre><code>touch example.R</code></pre>
-<pre><code>git commit -m "branch example"</code></pre>
-<pre><code>git push --set-upstream origin example</code></pre>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><img data-src="images/dtdata.png" data-fig-align="center"><br>
+</p>
 </section>
-<section id="prs" class="slide level2">
-<h2>PRs…</h2>
-
-<img data-src="images/Screenshot%202023-06-11%20at%2010.02.12.png" class="r-stretch"></section>
-<section id="branch-delete" class="slide level2">
-<h2>Branch delete</h2>
-<pre><code>git checkout origin
-git branch -d example
-git push origin --delete example</code></pre>
+<section id="why-are-these-data-different" class="slide level2">
+<h2>Why are these data different?</h2>
+<ol type="1">
+<li>Volume</li>
+<li>Velocity</li>
+<li>Producers</li>
+<li>Variety</li>
+</ol>
 </section>
-<section id="if-you-want-to-practice-more" class="slide level2">
-<h2>If you want to practice more…</h2>
-<p><a href="https://learngitbranching.js.org/" class="uri">https://learngitbranching.js.org/</a></p>
-</section>
-<section id="gitignore" class="slide level2">
-<h2>.gitignore</h2>
+<section id="digital-trace-data" class="slide level2">
+<h2>Digital trace data</h2>
+<p>What is digital trace data?</p>
 <ul>
-<li>Where you can specify what to remove from the version control</li>
+<li><p>Social media posts</p></li>
+<li><p>Blogs and webpages</p></li>
+<li><p>Call detail records (CDRs)</p></li>
+<li><p>Web searches</p></li>
+<li><p>Wearables</p></li>
+<li><p>Internet of Things</p></li>
 </ul>
 </section>
-<section id="gitignore-1" class="slide level2">
-<h2>.gitignore</h2>
+<section id="digital-trace-data-1" class="slide level2">
+<h2>Digital trace data</h2>
+<p>What does it look like?</p>
 
-<img data-src="images/Screenshot%202023-06-11%20at%2009.19.55.png" class="r-stretch"></section>
-<section id="gitignore-2" class="slide level2">
-<h2>.gitignore</h2>
-
-<img data-src="images/Screenshot%202023-06-11%20at%2009.20.07.png" class="r-stretch"></section>
-<section id="readme" class="slide level2">
-<h2>README</h2>
-<ul>
-<li>Where we describe what the repo contains</li>
-</ul>
-</section>
-<section id="readme-1" class="slide level2">
-<h2>README</h2>
-
-<img data-src="images/Screenshot%202023-06-11%20at%2009.22.56.png" class="r-stretch"></section>
-<section id="readme-2" class="slide level2">
-<h2>README</h2>
-
-<img data-src="images/Screenshot%202023-06-11%20at%2009.23.24.png" class="r-stretch"></section>
-<section id="reproducibility" class="slide level2">
-<h2>Reproducibility</h2>
-<ul>
-<li><p>Versioning your code is step 1. But there are many more steps…</p></li>
-<li><p>Reproducibility also depends on…</p></li>
-</ul>
-</section>
-<section id="reproducibility-1" class="slide level2">
-<h2>Reproducibility</h2>
-<div>
-<ul>
-<li class="fragment"><p>Version of the programming language used;</p></li>
-<li class="fragment"><p>Versions of the packages/libraries of said programming language used;</p></li>
-<li class="fragment"><p>Operating System, and its version;</p></li>
-<li class="fragment"><p>Versions of the underlying system libraries (which often go hand in hand with OS version, but not necessarily).</p></li>
-<li class="fragment"><p>And even the hardware architecture that you run all that software stack on.</p></li>
-</ul>
-<p>Taken from: <a href="https://raps-with-r.dev/intro.html">https://raps-with-r.dev/intro.html</a></p>
+<img data-src="images/readymade.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Salganik, Matthew. 2018. Bit by Bit: Social Research in the Digital Age. Princeton: Princeton University Press. p.7.</p></section>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>[{<span class="st">'text'</span><span class="sc">:</span> <span class="st">'hello freak [ __ ] I would love to play'</span>,</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">0.439</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">5.351</span>},</span>
+<span id="cb1-4"><a href="#cb1-4"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">'you the dinosaurs are not real video'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">3.72</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">4.82</span>},</span>
+<span id="cb1-7"><a href="#cb1-7"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">'just do it God'</span>, <span class="st">'start'</span><span class="sc">:</span> <span class="fl">5.79</span>, <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">5.25</span>},</span>
+<span id="cb1-8"><a href="#cb1-8"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">"we probably can't play it on YouTube"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">8.54</span>,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">3.76</span>},</span>
+<span id="cb1-11"><a href="#cb1-11"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">"where we'll get pulled but we could play"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">11.04</span>,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">4.44</span>},</span>
+<span id="cb1-14"><a href="#cb1-14"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">'the audio right play the I will put the'</span>,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">12.3</span>,</span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">4.59</span>},</span>
+<span id="cb1-17"><a href="#cb1-17"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">'video up on the screen and play the'</span>,</span>
+<span id="cb1-18"><a href="#cb1-18"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">15.48</span>,</span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">3.389</span>},</span>
+<span id="cb1-20"><a href="#cb1-20"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">'audio for you and you could just [ __ ] it'</span>,</span>
+<span id="cb1-21"><a href="#cb1-21"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">16.89</span>,</span>
+<span id="cb1-22"><a href="#cb1-22"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">4.29</span>},</span>
+<span id="cb1-23"><a href="#cb1-23"></a> {<span class="st">'text'</span><span class="sc">:</span> <span class="st">'your head could turn beet red smokes'</span>,</span>
+<span id="cb1-24"><a href="#cb1-24"></a>  <span class="st">'start'</span><span class="sc">:</span> <span class="fl">18.869</span>,</span>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="st">'duration'</span><span class="sc">:</span> <span class="fl">4.381</span>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="examples-1" class="slide level2">
+<h2>Examples</h2>
+
+<img data-src="images/ahram.png" class="r-stretch quarto-figure-center"></section>
+<section id="examples-2" class="slide level2">
+<h2>Examples</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="sc">&lt;</span>publicwhip scraperversion<span class="ot">=</span><span class="st">"b"</span> latest<span class="ot">=</span><span class="st">"yes"</span><span class="sc">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="er">&lt;</span>oral<span class="sc">-</span>heading id<span class="ot">=</span><span class="st">"uk.org.publicwhip/debate/2017-01-09b.1.0"</span> nospeaker<span class="ot">=</span><span class="st">"true"</span> colnum<span class="ot">=</span><span class="st">"1"</span> time<span class="ot">=</span><span class="st">""</span> url<span class="ot">=</span><span class="st">""</span><span class="sc">&gt;</span>Oral</span>
+<span id="cb2-3"><a href="#cb2-3"></a>Answers to</span>
+<span id="cb2-4"><a href="#cb2-4"></a>Questions<span class="sc">&lt;</span><span class="er">/</span>oral<span class="sc">-</span>heading<span class="sc">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="er">&lt;</span>major<span class="sc">-</span>heading id<span class="ot">=</span><span class="st">"uk.org.publicwhip/debate/2017-01-09b.1.1"</span> nospeaker<span class="ot">=</span><span class="st">"true"</span> colnum<span class="ot">=</span><span class="st">"1"</span> time<span class="ot">=</span><span class="st">""</span> url<span class="ot">=</span><span class="st">""</span><span class="sc">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>WORK AND PENSIONS</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="sc">&lt;</span><span class="er">/</span>major<span class="sc">-</span>heading<span class="sc">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="er">&lt;</span>speech id<span class="ot">=</span><span class="st">"uk.org.publicwhip/debate/2017-01-09b.1.2"</span> nospeaker<span class="ot">=</span><span class="st">"true"</span> colnum<span class="ot">=</span><span class="st">"1"</span> time<span class="ot">=</span><span class="st">""</span> url<span class="ot">=</span><span class="st">""</span><span class="sc">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="er">&lt;</span>p pid<span class="ot">=</span><span class="st">"b1.2/1"</span><span class="sc">&gt;</span>The Secretary of State was asked—<span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="er">&lt;/</span>speech<span class="sc">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="er">&lt;</span>speech id<span class="ot">=</span><span class="st">"uk.org.publicwhip/debate/2017-01-09b.1.3"</span> speakername<span class="ot">=</span><span class="st">"John Bercow"</span> person_id<span class="ot">=</span><span class="st">"uk.org.publicwhip/person/10040"</span> colnum<span class="ot">=</span><span class="st">"1"</span> time<span class="ot">=</span><span class="st">""</span> url<span class="ot">=</span><span class="st">""</span><span class="sc">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="er">&lt;</span>p pid<span class="ot">=</span><span class="st">"b1.3/1"</span><span class="sc">&gt;</span>I call Mr Gerald Jones. Where is the fella? He is not here.<span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="er">&lt;/</span>speech<span class="sc">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>  <span class="er">&lt;</span>minor<span class="sc">-</span>heading id<span class="ot">=</span><span class="st">"uk.org.publicwhip/debate/2017-01-09b.1.4"</span> nospeaker<span class="ot">=</span><span class="st">"true"</span> colnum<span class="ot">=</span><span class="st">"1"</span> time<span class="ot">=</span><span class="st">""</span> url<span class="ot">=</span><span class="st">""</span><span class="sc">&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>Self<span class="sc">-</span>employment</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="sc">&lt;</span><span class="er">/</span>minor<span class="sc">-</span>heading<span class="sc">&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>  <span class="er">&lt;</span>speech id<span class="ot">=</span><span class="st">"uk.org.publicwhip/debate/2017-01-09b.1.5"</span> person_id<span class="ot">=</span><span class="st">"uk.org.publicwhip/person/25309"</span> speakername<span class="ot">=</span><span class="st">"Peter Dowd"</span> oral<span class="sc">-</span>qnum<span class="ot">=</span><span class="st">"2"</span> colnum<span class="ot">=</span><span class="st">"1"</span> time<span class="ot">=</span><span class="st">""</span> url<span class="ot">=</span><span class="st">""</span><span class="sc">&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="er">&lt;</span>p pid<span class="ot">=</span><span class="st">"b1.5/1"</span> qnum<span class="ot">=</span><span class="st">"908056"</span><span class="sc">&gt;</span>What recent assessment he has made of trends <span class="cf">in</span> the level of self<span class="sc">-</span>employment. <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="applied-examples" class="slide level2">
+<h2>Applied examples</h2>
+
+<img data-src="images/twitterscience.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: <a href="https://advances.sciencemag.org/content/7/29/eabe6534/tab-article-info" class="uri">https://advances.sciencemag.org/content/7/29/eabe6534/tab-article-info</a></p></section>
+<section id="applied-examples-1" class="slide level2">
+<h2>Applied examples</h2>
+
+<img data-src="images/parler.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: <a href="https://arxiv.org/abs/2101.03820" class="uri">https://arxiv.org/abs/2101.03820</a></p></section>
+<section id="applied-examples-2" class="slide level2">
+<h2>Applied examples</h2>
+
+<img data-src="images/YTLai.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;4: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4088828" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4088828</a></p></section>
+<section id="applied-examples-3" class="slide level2">
+<h2>Applied examples</h2>
+
+<img data-src="images/cdrs.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;5: <a href="https://www.science.org/doi/10.1126/science.aac4420" class="uri">https://www.science.org/doi/10.1126/science.aac4420</a></p></section>
+<section id="applied-examples-4" class="slide level2">
+<h2>Applied examples</h2>
+
+<img data-src="images/dawidowitz.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;6: <a href="https://www.sciencedirect.com/science/article/pii/S0047272714000929" class="uri">https://www.sciencedirect.com/science/article/pii/S0047272714000929</a></p></section>
+<section id="applied-examples-5" class="slide level2">
+<h2>Applied examples</h2>
+
+<img data-src="images/marwick.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;7: <a href="https://journals.sagepub.com/doi/abs/10.1177/1461444810365313" class="uri">https://journals.sagepub.com/doi/abs/10.1177/1461444810365313</a></p></section>
+<section id="isnt-this-all-just-a-fad" class="slide level2">
+<h2>Isn’t this all just a fad?</h2>
+<p>No</p>
+</section>
+<section id="next-question" class="slide level2">
+<h2>Next question?</h2>
+</section>
+<section id="but-seriously" class="slide level2">
+<h2>But seriously…</h2>
+<ul>
+<li>Ubiquity</li>
+<li>Diversity</li>
+<li>Complementarity</li>
+</ul>
+</section>
+<section id="but-seriously-1" class="slide level2">
+<h2>But seriously…</h2>
+<ul>
+<li>Ubiquity
+<ul>
+<li>Digital trace data is everywhere and “always on”</li>
+</ul></li>
+</ul>
+</section>
+<section id="but-seriously-2" class="slide level2">
+<h2>But seriously…</h2>
+<ul>
+<li>Diversity
+<ul>
+<li>of methods and data sources means no-brainer to use</li>
+</ul></li>
+</ul>
+</section>
+<section id="but-seriously-3" class="slide level2">
+<h2>But seriously…</h2>
+<ul>
+<li>Complementarity
+<ul>
+<li>of data and methods means enrichment (of the old) not substitution (by the new)</li>
+</ul></li>
+</ul>
+</section>
+<section id="isnt-it-all-just-stats.quant.data-science" class="slide level2">
+<h2>Isn’t it all just [stats./quant./data science]?</h2>
+<ul>
+<li>In some ways: yeah…</li>
+</ul>
+</section>
+<section id="isnt-it-all-just-stats.quant.data-science-1" class="slide level2">
+<h2>Isn’t it all just [stats./quant./data science]?</h2>
+
+<img data-src="images/tukey.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;8: <a href="https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-33/issue-1/The-Future-of-Data-Analysis/10.1214/aoms/1177704711.full" class="uri">https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-33/issue-1/The-Future-of-Data-Analysis/10.1214/aoms/1177704711.full</a></p></section>
+<section id="isnt-it-all-just-stats.quant.data-science-2" class="slide level2">
+<h2>Isn’t it all just [stats./quant./data science]?</h2>
+<ul>
+<li><p>In some ways: yeah…</p></li>
+<li><p>In other ways: well, no…</p>
+<ul>
+<li><p>New types of data</p>
+<ul>
+<li>e.g., unstructured and trace data</li>
+<li>associated decisions re how to restructure (compare: surveys)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="isnt-it-all-just-stats.quant.data-science-3" class="slide level2">
+<h2>Isn’t it all just [stats./quant./data science]?</h2>
+<ul>
+<li><p>In other ways: well, no…</p>
+<ul>
+<li><p>New emphasis</p>
+<ul>
+<li>e.g., learning from data and prediction</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="isnt-it-all-just-stats.quant.data-science-4" class="slide level2">
+<h2>Isn’t it all just [stats./quant./data science]?</h2>
+<ul>
+<li><p>In other ways: well, no…</p>
+<ul>
+<li><p>New theory</p>
+<ul>
+<li>e.g., human-computer interaction</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="isnt-it-all-just-stats.quant.data-science-5" class="slide level2">
+<h2>Isn’t it all just [stats./quant./data science]?</h2>
+<ul>
+<li><p>In other ways: well, no…</p>
+<ul>
+<li>New ethical dilemmas…</li>
+</ul></li>
+</ul>
 </section>
 <section id="ethics" class="slide level2 center">
 <h2>Ethics</h2>
@@ -807,6 +917,177 @@ git push origin --delete example</code></pre>
 <ul>
 <li>Go to chalkboard</li>
 </ul>
+</section>
+<section id="workflow" class="slide level2 center">
+<h2>Workflow</h2>
+<div class="cell">
+<style type="text/css">
+.center h2 {
+  text-align: center;
+}
+</style>
+</div>
+</section>
+<section id="workflow-1" class="slide level2">
+<h2>Workflow</h2>
+<ul>
+<li>Who uses Git?</li>
+</ul>
+<pre><code>git --version </code></pre>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.07.31.png" class="r-stretch"></section>
+<section id="workflow-2" class="slide level2">
+<h2>Workflow</h2>
+<div>
+<ol type="1">
+<li class="fragment"><p>We all need to create a Github account.</p></li>
+<li class="fragment"><p>We get our computer talking to Git by logging our Github credentials (either SSH or HTTPS approach)</p></li>
+<li class="fragment"><p>We create a Github Repo</p></li>
+<li class="fragment"><p>We create an R “Project”</p></li>
+<li class="fragment"><p>We start writing our code</p></li>
+<li class="fragment"><p>We “commit” and then “push” our changes when ready</p></li>
+</ol>
+</div>
+</section>
+<section id="setting-up-in-r" class="slide level2">
+<h2>Setting up in R</h2>
+<ul>
+<li>Create a personal access token</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">install.packages</span>(<span class="st">"usethis"</span>) <span class="co">#if you haven't already installed</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="setting-up-in-r-1" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.09.00.png" class="r-stretch"></section>
+<section id="setting-up-in-r-2" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.09.34.png" class="r-stretch"></section>
+<section id="setting-up-in-r-3" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.12.36.png" class="r-stretch"></section>
+<section id="setting-up-in-r-4" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.04.32.png" class="r-stretch"></section>
+<section id="setting-up-in-r-5" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.04.50.png" class="r-stretch"></section>
+<section id="setting-up-in-r-6" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202022-09-22%20at%2009.05.01-01.png" class="r-stretch"></section>
+<section id="setting-up-in-r-7" class="slide level2">
+<h2>Setting up in R</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.32.14.png" class="r-stretch"></section>
+<section id="setting-up-in-r-8" class="slide level2">
+<h2>Setting up in R</h2>
+</section>
+<section id="section-4" class="slide level2">
+<h2><img data-src="images/Screenshot%202023-06-11%20at%2009.33.11.png"></h2>
+</section>
+<section id="or-in-terminal" class="slide level2">
+<h2>Or in Terminal…</h2>
+<pre><code>git clone https://github.com/cjbarrie/sicss_23</code></pre>
+<pre><code>cd sicss_23</code></pre>
+<pre><code>git remote -v</code></pre>
+<pre><code>git pull origin main</code></pre>
+<pre><code>git status</code></pre>
+</section>
+<section id="committing" class="slide level2">
+<h2>Committing</h2>
+<pre><code>touch example.R</code></pre>
+<pre><code>git status </code></pre>
+<pre><code>git add --all
+# or git add .</code></pre>
+<pre><code>git commit -m "example commit"</code></pre>
+<pre><code>git push</code></pre>
+<pre><code>git pull origin main
+
+#OR</code></pre>
+<pre><code>git fetch origin main</code></pre>
+<pre><code>git merge</code></pre>
+</section>
+<section id="branching" class="slide level2">
+<h2>Branching</h2>
+<pre><code>git branch "example"</code></pre>
+<pre><code>git checkout example</code></pre>
+<pre><code>touch example.R</code></pre>
+<pre><code>git commit -m "branch example"</code></pre>
+<pre><code>git push --set-upstream origin example</code></pre>
+</section>
+<section id="prs" class="slide level2">
+<h2>PRs…</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2010.02.12.png" class="r-stretch"></section>
+<section id="branch-delete" class="slide level2">
+<h2>Branch delete</h2>
+<pre><code>git checkout origin
+git branch -d example
+git push origin --delete example</code></pre>
+</section>
+<section id="if-you-want-to-practice-more" class="slide level2">
+<h2>If you want to practice more…</h2>
+<p><a href="https://learngitbranching.js.org/" class="uri">https://learngitbranching.js.org/</a></p>
+</section>
+<section id="gitignore" class="slide level2">
+<h2>.gitignore</h2>
+<ul>
+<li>Where you can specify what to remove from the version control</li>
+</ul>
+</section>
+<section id="gitignore-1" class="slide level2">
+<h2>.gitignore</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.19.55.png" class="r-stretch"></section>
+<section id="gitignore-2" class="slide level2">
+<h2>.gitignore</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.20.07.png" class="r-stretch"></section>
+<section id="readme" class="slide level2">
+<h2>README</h2>
+<ul>
+<li>Where we describe what the repo contains</li>
+</ul>
+</section>
+<section id="readme-1" class="slide level2">
+<h2>README</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.22.56.png" class="r-stretch"></section>
+<section id="readme-2" class="slide level2">
+<h2>README</h2>
+
+<img data-src="images/Screenshot%202023-06-11%20at%2009.23.24.png" class="r-stretch"></section>
+<section id="reproducibility" class="slide level2">
+<h2>Reproducibility</h2>
+<ul>
+<li><p>Versioning your code is step 1. But there are many more steps…</p></li>
+<li><p>Reproducibility also depends on…</p></li>
+</ul>
+</section>
+<section id="reproducibility-1" class="slide level2">
+<h2>Reproducibility</h2>
+<div>
+<ul>
+<li class="fragment"><p>Version of the programming language used;</p></li>
+<li class="fragment"><p>Versions of the packages/libraries of said programming language used;</p></li>
+<li class="fragment"><p>Operating System, and its version;</p></li>
+<li class="fragment"><p>Versions of the underlying system libraries (which often go hand in hand with OS version, but not necessarily).</p></li>
+<li class="fragment"><p>And even the hardware architecture that you run all that software stack on.</p></li>
+</ul>
+<p>Taken from: <a href="https://raps-with-r.dev/intro.html" class="uri">https://raps-with-r.dev/intro.html</a></p>
+</div>
 <div class="footer footer-default">
 
 </div>
