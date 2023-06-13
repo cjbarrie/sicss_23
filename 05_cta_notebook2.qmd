@@ -449,4 +449,4 @@ We can see, here, then that our embeddings seem to make sense. We zoomed in firs
 1.  Inspect and visualize the nearest neighbour synonyms of other relevant words in the tweets corpus
 2.  Identify another region of interest in the GloVe-trained model and visualize
 3.  Output nearest synonyms for target words in a formatted table using the `kableExtra` package.
-4.  Investigate the [conText](https://github.com/prodriguezsosa/conText/) package and implement an analysis with e.g., the `nns_ratio()` function or another function. See [this guide](https://cran.r-project.org/web/packages/conText/vignettes/quickstart.html) for some example analyses.
+4.  Investigate the [conText](https://github.com/prodriguezsosa/conText/) package and implement an analysis with e.g., the `nns_ratio()` function or another function. See [this guide](https://cran.r-project.org/web/packages/conText/vignettes/quickstart.html) for some example analyses. (Tip: see [here](https://github.com/prodriguezsosa/conText/blob/master/vignettes/quickstart.md#estimating-the-transformation-matrix) for how to estimate the transformation matrix).
