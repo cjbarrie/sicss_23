@@ -372,7 +372,7 @@ saveRDS(glove_embedding, file = "local_glove.rds")
 
 ```{r, eval = F}
 
-url <- "https://github.com/cjbarrie/sicss_23/blob/main/data/wordembed/local_glove.rds?raw=true"
+url <- "https://github.com/cjbarrie/sicss_23/blob/main/data/local_glove.rds?raw=true"
 glove_embedding <- readRDS(url(url, method="libcurl"))
 
 ```
