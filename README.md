@@ -64,3 +64,8 @@ We will provide a set of groups project ideas that have been suggested by your i
 - CTA worksheet 2: [here](https://raw.githack.com/cjbarrie/sicss_23/main/05_cta_notebook2.html)
 - Scaling script: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/ScalingLectureCode2023.r)
 - Scaling slides: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/ScalingLectureSlides.pdf)
+
+# Day 3
+
+- Networks slides: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/sicss_networks_2023.pdf)
+- Networks materials: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/mp_tweet_networks_2023_v1.R)
