@@ -69,3 +69,9 @@ We will provide a set of groups project ideas that have been suggested by your i
 
 - Networks slides: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/sicss_networks_2023.pdf)
 - Networks materials: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/mp_tweet_networks_2023_v1.R)
+
+# Day 5
+
+- Global analysis slides: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/Global_Analysis.pdf)
+- Classification slides: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/Text_Classification.pdf)
+- Prediction slides: [here](https://github.com/cjbarrie/sicss_23/blob/main/other_instructor_materials/Predicting_Attributes.pdf)
